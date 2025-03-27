@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        #train {
+            position: relative;
+            width: 100px;
+            animation: move 5s infinite linear;
+        }
+        @keyframes move {
+            from { transform: translateX(0); }
+            to { transform: translateX(400px); }
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="train" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Train_vector.svg" alt="Train">
+    <h1 class="mt-3" style="font-size: 24px; color: navy;">Click the following buttons to handle animation</h1>
+    <button id="startBtn" class="btn btn-success">Start</button>
+    <button id="stopBtn" class="btn btn-danger">Stop</button>
+
+    <script>
+        const train = document.getElementById('train');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+
+        let animationRunning = false;
+
+        startBtn.onclick = function() {
+            if (!animationRunning) {
+                train.style.animationPlayState = 'running';
+                animationRunning = true;
+            }
+        };
+
+        stopBtn.onclick = function() {
+            train.style.animationPlayState = 'paused';
+            animationRunning = false;
+        };
+
+        // Initialize the animation to be paused
+        train.style.animationPlayState = 'paused';
+    </script>
+
+</body>
+</html>

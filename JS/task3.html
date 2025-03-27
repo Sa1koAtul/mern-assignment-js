@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication and Division Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>JavaScript Calculator</h2>
+        <form id="calcForm">
+            <div class="form-group">
+                <label for="firstNumber">1st Number:</label>
+                <input type="number" class="form-control" id="firstNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="secondNumber">2nd Number:</label>
+                <input type="number" class="form-control" id="secondNumber" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="multiply()">Multiply</button>
+            <button type="button" class="btn btn-secondary" onclick="divide()">Divide</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function multiply() {
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            const product = firstNumber * secondNumber;
+            document.getElementById('result').innerText = `The Result Is: ${product}`;
+        }
+
+        function divide() {
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+            if (secondNumber === 0) {
+                document.getElementById('result').innerText = "Cannot divide by zero";
+            } else {
+                const quotient = firstNumber / secondNumber;
+                document.getElementById('result').innerText = `The Result Is: ${quotient}`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 50px;
+        }
+        .error {
+            color: red;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" required>
+            <div class="error" id="nameError" style="display:none;">This field is required</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" required>
+            <div class="error" id="emailError" style="display:none;">A valid email address is required</div>
+        </div>
+
+        <div class="form-group">
+            <label for="website">Website:</label>
+            <input type="url" class="form-control" id="website" required>
+            <div class="error" id="websiteError" style="display:none;">A valid URL is required</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea class="form-control" id="message" required></textarea>
+            <div class="error" id="messageError" style="display:none;">This field is required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        let valid = true;
+
+        // Hide all error messages
+        document.querySelectorAll('.error').forEach(function(el) {
+            el.style.display = 'none';
+        });
+
+        // Name validation
+        if (document.getElementById('name').value.trim() === '') {
+            document.getElementById('nameError').style.display = 'block';
+            valid = false;
+        }
+
+        // Email validation
+        const email = document.getElementById('email').value.trim();
+        if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+            document.getElementById('emailError').style.display = 'block';
+            valid = false;
+        }
+
+        // Website validation
+        const website = document.getElementById('website').value.trim();
+        if (!website || !/^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/.test(website)) {
+            document.getElementById('websiteError').style.display = 'block';
+            valid = false;
+        }
+
+        // Message validation
+        if (document.getElementById('message').value.trim() === '') {
+            document.getElementById('messageError').style.display = 'block';
+            valid = false;
+        }
+
+        if (!valid) {
+            event.preventDefault(); // Prevent form submission if not valid
+        }
+    });
+</script>
+
+</body>
+</html>

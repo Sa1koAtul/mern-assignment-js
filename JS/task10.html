@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: darkgreen;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .registered-users {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Welcome to User Management</h1>
+        <p>Use the buttons below to navigate.</p>
+        <a class="btn btn-primary" id="registerUserBtn">Register a User</a>
+        <a class="btn btn-success" id="viewUsersBtn">View Registered Users</a>
+    </div>
+
+    <div class="container">
+        <div id="registrationForm" class="form-container">
+            <h2>User Registration</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="text" class="form-control" id="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" id="address" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="button" class="btn btn-secondary" id="viewRegisteredUsersBtn">View Registered Users</button>
+            </form>
+        </div>
+
+        <div id="registeredUsers" class="registered-users" style="display: none;">
+            <h2>Registered Users</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                </tbody>
+            </table>
+            <button class="btn btn-primary" id="registerMoreUsersBtn">Register More Users</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let users = [];
+
+        document.getElementById('userForm').onsubmit = function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const contact = document.getElementById('contact').value;
+            const address = document.getElementById('address').value;
+
+            users.push({ name, email, contact, address });
+            alert("User registered successfully!");
+            this.reset();
+        };
+
+        document.getElementById('viewRegisteredUsersBtn').addEventListener('click', function() {
+            const userTable = document.getElementById('userTable');
+            userTable.innerHTML = '';
+            users.forEach(user => {
+                const row = userTable.insertRow();
+                row.insertCell(0).innerText = user.name;
+                row.insertCell(1).innerText = user.email;
+                row.insertCell(2).innerText = user.contact;
+                row.insertCell(3).innerText = user.address;
+            });
+            document.getElementById('registeredUsers').style.display = 'block';
+            document.querySelector('.form-container').style.display = 'none';
+        });
+
+        document.getElementById('registerMoreUsersBtn').addEventListener('click', function() {
+            document.getElementById('registrationForm').style.display = 'block';
+            document.getElementById('registeredUsers').style.display = 'none';
+        });
+
+        document.getElementById('registerUserBtn').addEventListener('click', function() {
+            document.getElementById('registrationForm').style.display = 'block';
+            document.getElementById('registeredUsers').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

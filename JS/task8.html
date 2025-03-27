@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f8d2e1, #e5c3ff);
+        }
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        .form-title {
+            text-align: center;
+            color: blue;
+        }
+        .poor {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2 class="form-title">Registration Form</h2>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="rePassword">Re-enter Password</label>
+            <input type="password" class="form-control" id="rePassword" required>
+            <small class="poor">POOR OR MISMATCH</small>
+        </div>
+        <div class="form-group">
+            <label>Gender</label><br>
+            <input type="radio" name="gender" value="male" required> Male
+            <input type="radio" name="gender" value="female" required> Female
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" required></textarea>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" required>
+            <small class="poor">POOR</small>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select class="form-control" id="country" required>
+                <option value="" disabled selected>Choose your country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Languages known</label><br>
+            <input type="checkbox" value="English"> English
+            <input type="checkbox" value="Kannada"> Kannada
+            <input type="checkbox" value="Hindi"> Hindi
+            <input type="checkbox" value="Telugu"> Telugu
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="declaration" required>
+            <label class="form-check-label" for="declaration">Hereby I declare all the given details are true</label>
+        </div>
+        <button type="submit" class="btn btn-danger btn-block">REGISTER</button>
+    </form>
+    <p class="text-center">Log in to <a href="#">Ethnus</a> website</p>
+</div>
+
+<script>
+    document.getElementById("registrationForm").onsubmit = function(event) {
+        event.preventDefault();
+        alert('Form submitted!');
+        // Add additional form handling logic here
+    }
+</script>
+
+</body>
+</html>
